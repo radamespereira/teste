@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Donut Chart Widget</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,800' rel='stylesheet' type='text/css'>
+  
+  
+<style>
+ /* NOTE: The styles were added inline because Prefixfree needs access 
+ to your styles and they must be inlined if they are on local disk! */
+
+  /* 
+  34 => 24 - distancia da centralização
+  85 => 60 - tamanho do chart
+  46,80 => .78 => % do circulo branco interno definido a largura do donut
+  */
+
+.tiny-chartbox {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flexbox;
+  display: inline-flex;
+  margin-bottom: 24px;
+}
+.tiny-chartbox div[chart-type*="donut"] {
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: relative;
+  margin-right: 115px;
+  margin-left: 115px;
+}
+.tiny-chartbox div[chart-type*="donut"]:last-of-type {
+  margin-right: 0;
+}
+.tiny-chartbox div.donut-hole { /*circulo interno*/
+  height: 22px; /*pode ser equivalente a 0.70% do externo*/
+  width: 22px; /*pode ser equivalente a 0.70% do externo*/
+  background-color: #fff;
+  z-index: 20;
+  position: absolute;
+  top: 4.0px;
+  left: 4.0px;
+  border-radius: 22px;
+  line-height: 15px;
+}
+.tiny-chartbox span.donut-filling {
+  position: absolute;
+  display: block;
+  vertical-align: middle;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #000000;
+  font-size: 12px;
+  top: 50%; /*desce 50% do top em relação ao pai*/
+  margin-top: -7.5px; /*sobe 1/2 valor de heigth, em relação ao pai, para centralizar perfeitamente*/
+  width: 22px; /*largura do div onde fica o texto interno*/
+  height: 15px; /*altura do div onde fica o texto interno*/
+  text-align: center;
+  cursor: default;
+  overflow: none;
+}
+.tiny-chartbox div.donut-caption-wrapper { /*texto de baixo fora do donut*/
+  width: 30px;
+  align-content: center;
+  position: relative;
+  top: 64px; /*em relação ao PAI*/
+}
+.tiny-chartbox span.donut-caption {
+  display: block;
+  text-align: center;
+  font-family: "Open Sans";
+  color: #616161;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: default;
+  margin: 0 auto;
+}
+.tiny-chartbox .donut-bite {
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  overflow: hidden;
+  top: 0;
+  left: 15px;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+}
+.tiny-chartbox .donut-bite.large {
+  width: 30px;
+  height: 30px;
+  left: 0;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+}
+.tiny-chartbox .donut-bite:BEFORE {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  top: 0;
+  left: -15px;
+  border-radius: 15px 0 0 15px;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
+}
+.tiny-chartbox .donut-bite.large:BEFORE {
+  left: 0;
+}
+.tiny-chartbox .donut-bite.large:AFTER {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  left: 15px;
+  border-radius: 0 15px 15px 0;
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  
+<!-- Specification-->
+<!---->
+<!-- id: each chart requires its own unique ID-->
+<!-- chart-type: Just set to 'donut'-->
+<!-- data-chart-max: The number of items in the set being charted-->
+<!-- data-chart-segments: { index : [starting point of segment, # of units in segment, color]}-->
+<!-- data-chart-text: The text to appear within the donut hole-->
+<!-- data-chart-caption: the text to appear beneath the chart-->
+<!-- data-chart-initial-rotate: The initial angle from which the donut populates the chart-->
+
+<div style="margin-top: 100px;" class="tiny-chartbox">
+  
+  <div 
+    id="thingsChart" 
+    chart-type="donut" 
+    data-chart-max="100" 
+    data-chart-segments="{&quot;0&quot;:[&quot;0&quot;,&quot;88&quot;,&quot;#428bca&quot;],&quot;1&quot;:[&quot;88&quot;,&quot;12&quot;,&quot;#ecebeb&quot;]}" 
+    data-chart-text="88" 
+    data-chart-caption="Things to do ecebeb "></div>
+  
+</div>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>
